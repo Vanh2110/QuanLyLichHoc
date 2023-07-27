@@ -13,26 +13,31 @@ public partial class NguoiDung
     [Column("username")]
     [StringLength(30)]
     [Unicode(false)]
-    public string Username { get; set; } = null!;
+    public string Username { get; set; } = null!; 
 
     [Column("passsword")]
     [StringLength(30)]
     [Unicode(false)]
-    public string? Passsword { get; set; } 
-    public enum LoaiND
-    {
-        admin,
-        giangvien,
-        sinhvien 
-    }
+    public string? Passsword { get; set; }
 
-    private LoaiND LoaiNguoiDung;
-    public LoaiND LoaiNguoiDung1 { get { return LoaiNguoiDung; } set => LoaiNguoiDung = value; }
+    [StringLength(30)]
+    [Unicode(false)]
+    public string? LoaiTaiKhoan { get; set; }
 
-    public NguoiDung(string username, string password, LoaiND loainguoidung) 
-    { 
-        Username = username;
-        Passsword = password;
-        LoaiNguoiDung1 = loainguoidung;
-    }
+    //public enum LoaiND
+    //{
+    //    admin,
+    //    giangvien,
+    //    sinhvien
+    //}
+
+    //private LoaiND LoaiNguoiDung;
+    //public LoaiND LoaiNguoiDung1 { get { return LoaiNguoiDung; } set => LoaiNguoiDung = value; }
+
+    //public NguoiDung(string username, string password, LoaiND loainguoidung)
+    //{
+    //    Username = username;
+    //    Passsword = password;
+    //    LoaiNguoiDung1 = loainguoidung;
+    //}
 }

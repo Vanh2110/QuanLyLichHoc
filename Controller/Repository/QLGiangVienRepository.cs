@@ -8,52 +8,54 @@ using System.Threading.Tasks;
 
 namespace Giao_Dien.Controller.Repository
 {
-    internal class QLLopHocRepository
+    internal class QLGiangVienRepository
     {
         DBContext _context;
-        public QLLopHocRepository()
+        public QLGiangVienRepository()
         {
             _context = new DBContext();
         }
-        public List<LopHoc> GetLopHoc(string search)
+        public List<GiangVien> GetGiangVien(string search)
         {
             if (search == null)
             {
-                List<LopHoc> data = _context.LopHocs.ToList();
+                List<GiangVien> data = _context.GiangViens.ToList();
                 return data;
             }
-            return _context.LopHocs.Where(lh => lh.MaLopHoc.StartsWith(search) || lh.MaLopHoc.StartsWith(search)).ToList();
+            return _context.GiangViens.Where(gv => gv.MaGiangVien == search).ToList();
         }
-        public bool ThemLopHoc(LopHoc lopHoc)
+        public bool ThemGiangVien(GiangVien gv)
         {
-            if (lopHoc == null)
+            if (gv == null)
             {
                 return false;
             }
-            lopHoc.IdLopHoc = Guid.NewGuid();
-            _context.Add(lopHoc);
+            gv.IdGiangVien = Guid.NewGuid();
+            _context.Add(gv);
             _context.SaveChanges();
             return true;
         }
-        public bool CapNhatLopHoc(LopHoc lopHoc)
+        public bool CapNhatGiangVien(GiangVien gv)
         {
-            if (lopHoc == null)
+            if (gv == null)
             {
                 return false;
             }
-            _context.Update(lopHoc);
+            _context.Update(gv);
             _context.SaveChanges();
             return true;
         }
-        public bool XoaLopHoc(LopHoc lopHoc)
+        public bool XoaGiangVien(GiangVien gv)
         {
-            if (lopHoc == null)
+            if (gv == null)
             {
                 return false;
             }
-            _context.Remove(lopHoc);
-            _context.SaveChanges();
+            _context.Remove(gv);
+            _context.SaveChanges(); 
             return true;
         }
     }
 }
+    
+

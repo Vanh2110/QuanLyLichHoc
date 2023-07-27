@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             btnLogin = new Button();
             txtPass = new TextBox();
             txtUser = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            err = new ErrorProvider(components);
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)err).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -74,6 +77,7 @@
             txtPass.Size = new Size(218, 32);
             txtPass.TabIndex = 4;
             txtPass.UseSystemPasswordChar = true;
+            txtPass.TextChanged += txtPass_TextChanged;
             // 
             // txtUser
             // 
@@ -82,6 +86,7 @@
             txtUser.Name = "txtUser";
             txtUser.Size = new Size(218, 32);
             txtUser.TabIndex = 3;
+            txtUser.TextChanged += txtUser_TextChanged;
             // 
             // label2
             // 
@@ -105,6 +110,10 @@
             label1.TabIndex = 1;
             label1.Text = "Username";
             // 
+            // err
+            // 
+            err.ContainerControl = this;
+            // 
             // FormDangNhap
             // 
             AcceptButton = btnLogin;
@@ -120,6 +129,7 @@
             Load += FormDangNhap_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);
         }
 
@@ -131,5 +141,6 @@
         private TextBox txtUser;
         private Label label2;
         private Label label1;
+        private ErrorProvider err;
     }
 }

@@ -1,19 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="View\FormQuanLyGiangVien.cs">
+    <Compile Update="View\FormGiangVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\FormSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\QuanTriVien\FormQuanLyGiangVien.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\FormDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\FormQuanLyLopHoc.cs">
+    <Compile Update="View\QuanTriVien\FormQuanLyLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\FormQuanLySinhVien.cs">
+    <Compile Update="View\QuanTriVien\FormQuanLySinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\FormQuanTriVien.cs">
+    <Compile Update="View\QuanTriVien\FormQuanTriVien.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

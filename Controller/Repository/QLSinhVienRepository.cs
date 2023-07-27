@@ -8,50 +8,50 @@ using System.Threading.Tasks;
 
 namespace Giao_Dien.Controller.Repository
 {
-    internal class QLLopHocRepository
+    internal class QLSinhVienRepository
     {
         DBContext _context;
-        public QLLopHocRepository()
+        public QLSinhVienRepository()
         {
             _context = new DBContext();
         }
-        public List<LopHoc> GetLopHoc(string search)
+        public List<SinhVien> GetSinhVien(string search)
         {
-            if (search == null)
+            if(search == null)
             {
-                List<LopHoc> data = _context.LopHocs.ToList();
+                List<SinhVien> data = _context.SinhViens.ToList();
                 return data;
             }
-            return _context.LopHocs.Where(lh => lh.MaLopHoc.StartsWith(search) || lh.MaLopHoc.StartsWith(search)).ToList();
+            return _context.SinhViens.Where(sv => sv.MaSv.StartsWith(search)).ToList();
         }
-        public bool ThemLopHoc(LopHoc lopHoc)
+        public bool ThemSinhVien(SinhVien sv)
         {
-            if (lopHoc == null)
+            if (sv == null)
             {
                 return false;
             }
-            lopHoc.IdLopHoc = Guid.NewGuid();
-            _context.Add(lopHoc);
+            sv.IdSinhVien = Guid.NewGuid();
+            _context.Add(sv);
             _context.SaveChanges();
             return true;
         }
-        public bool CapNhatLopHoc(LopHoc lopHoc)
+        public bool CapNhatSinhVien(SinhVien sv)
         {
-            if (lopHoc == null)
+            if(sv == null)
             {
                 return false;
             }
-            _context.Update(lopHoc);
+            _context.Update(sv);
             _context.SaveChanges();
-            return true;
+            return true; 
         }
-        public bool XoaLopHoc(LopHoc lopHoc)
+        public bool XoaSinhVien(SinhVien sv)
         {
-            if (lopHoc == null)
+            if(sv == null)
             {
                 return false;
             }
-            _context.Remove(lopHoc);
+            _context.Remove(sv);
             _context.SaveChanges();
             return true;
         }

@@ -1,3 +1,5 @@
+using Giao_Dien.View;
+
 namespace Giao_Dien
 {
     internal static class Program
@@ -14,6 +16,7 @@ namespace Giao_Dien
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FormDangNhap());
+            //Application.Run(new FormQuanTriVien());
         }
     }
 }

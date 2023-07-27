@@ -1,4 +1,5 @@
-﻿using Giao_Dien.Model.DomainClass;
+﻿using Giao_Dien.Controller.Service;
+using Giao_Dien.Model.DomainClass;
 using Giao_Dien.View;
 using System.Collections.Generic;
 
@@ -7,7 +8,8 @@ namespace Giao_Dien
     public partial class FormDangNhap : Form
     {
         bool isExit = true;
-        List<NguoiDung> _lstNguoiDung = DanhSachNguoiDung.Instance.LstNguoiDung;
+        NguoiDungService _NDservice = new NguoiDungService();
+        //List<NguoiDung> _lstNguoiDung = DanhSachNguoiDung.Instance.LstNguoiDung;
 
         public FormDangNhap()
         {
@@ -18,55 +20,61 @@ namespace Giao_Dien
             if (isExit)
                 Application.Exit();
         }
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+        private void txtPass_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (KiemTraDangNhap(txtPass.Text, txtPass.Text))
+            string TKDN = txtUser.Text;
+            string MKDN = txtPass.Text;
+
+            string loaiTK = _NDservice.KiemTraNguoiDung(TKDN, MKDN);
+
+
+            if (loaiTK != null)
             {
-                MessageBox.Show("Đăng nhập thành công !", "Thông Báo");
-                switch (Const.NguoiDung.LoaiNguoiDung1)
+                if (loaiTK.Equals("Quản trị viên"))
                 {
-                    case NguoiDung.LoaiND.admin:
-                        FormQuanTriVien fQTV = new FormQuanTriVien();
-                        fQTV.ShowDialog();
-                        this.Hide();
-                        break;
-                    case NguoiDung.LoaiND.sinhvien:
+                    MessageBox.Show("Đăng nhập thành công ", "Thông báo !");
 
-
-                        break;
-                    case NguoiDung.LoaiND.giangvien:
-
-
-                        break;
+                    FormQuanTriVien fQTV = new FormQuanTriVien();
+                    fQTV.Show();
+                    this.Hide();
                 }
-            }
-            else if (txtUser.Text.Trim() == "" || txtPass.Text.Trim() == "")
-            {
-                MessageBox.Show("Username và password không được để trống !", "Thông báo");
+                else if (loaiTK.Equals("Giảng viên"))
+                {
+                    MessageBox.Show("Đăng nhập thành công ", "Thông báo !");
+
+                    FormGiangVien fGV = new FormGiangVien();
+                    fGV.Show();
+                    this.Hide();
+                }
+                else if (loaiTK.Equals("Sinh viên"))
+                {
+                    MessageBox.Show("Đăng nhập thành công ", "Thông báo !");
+
+                    FormSinhVien fSV = new FormSinhVien();
+                    fSV.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                MessageBox.Show("Sai username hoặc password !", "Thông Báo ");
-                txtUser.Focus();
+                MessageBox.Show("Tài khoản hoặc mật khẩu sai !", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        bool KiemTraDangNhap(string username, string password)
-        {
-            for (int i = 0; i < _lstNguoiDung.Count; i++)
-            {
-                if (username == _lstNguoiDung[i].Username && password == _lstNguoiDung[i].Passsword)
-                {
-                    Const.NguoiDung = _lstNguoiDung[i];
-                    return true;
-                }
-            }
-            return false;
-        }
 
         private void FormDangNhap_Load(object sender, EventArgs e)
         {
 
         }
+
+
     }
 }

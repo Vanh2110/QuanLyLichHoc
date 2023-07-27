@@ -23,9 +23,9 @@ namespace Giao_Dien.Controller.Service
         public List<string> FakeData()
         {
             var data = new List<string>();
-            data.Add("Nguyên Anh Dũng");
-            data.Add("Nguyễn Khánh Huyền");
-            data.Add("Nguyễn Khánh Linh");
+            data.Add("FE123");
+            data.Add("huyennk6");
+            data.Add("linhdt5");
             return data;
         }
         public void ThemLopHoc(LopHoc obj)
@@ -39,14 +39,15 @@ namespace Giao_Dien.Controller.Service
                 MessageBox.Show("Thêm thất bại !");
             }
         }
-        public void CNLopHoc(LopHoc obj)
+        public void CapNhatLopHoc(LopHoc obj)
         {
             var temp = _repos.GetLopHoc(null).FirstOrDefault(lh => lh.IdLopHoc == obj.IdLopHoc);           
             temp.MaLopHoc = obj.MaLopHoc;
             temp.Ten = obj.Ten;
+            temp.MaGiangVien = obj.MaGiangVien;
             temp.NgayBatDau = obj.NgayBatDau;
             temp.NgayKetThuc = obj.NgayKetThuc;
-            if (_repos.ThemLopHoc(temp) == true)
+            if (_repos.CapNhatLopHoc(temp) == true)
             {
                 MessageBox.Show("Cập nhật thành công !");
             }
@@ -58,7 +59,7 @@ namespace Giao_Dien.Controller.Service
         public void XoaLopHoc(Guid IDlh)
         {
             var obj = _repos.GetLopHoc(null).FirstOrDefault(lh => lh.IdLopHoc == IDlh);
-            if (_repos.ThemLopHoc(obj) == true)
+            if (_repos.XoaLopHoc(obj) == true)
             {
                 MessageBox.Show("Xóa thành công !");
             }
