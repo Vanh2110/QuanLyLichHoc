@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="View\Lich7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\QLLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\SelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\QLLH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\QLTV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\XemLH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
